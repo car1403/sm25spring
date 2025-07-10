@@ -7,21 +7,16 @@
   <h5>Input Id, Password</h5>
   <div class="row">
     <div class="col-sm-8">
-      <form action="/action_page.php">
+      <form action="/loginimpl" method="post">
         <div class="form-group">
-          <label for="email">Email address:</label>
-          <input type="email" class="form-control" placeholder="Enter email" id="email">
+          <label for="id">Id:</label>
+          <input type="text" class="form-control" placeholder="Enter id" id="id" name="id">
         </div>
         <div class="form-group">
           <label for="pwd">Password:</label>
-          <input type="password" class="form-control" placeholder="Enter password" id="pwd">
+          <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="pwd">
         </div>
-        <div class="form-group form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="checkbox"> Remember me
-          </label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">LOGIN</button>
       </form>
     </div>
     <div class="col-sm-4">
