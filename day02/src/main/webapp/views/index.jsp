@@ -21,13 +21,13 @@
 <body>
 <ul class="nav justify-content-end">
   <li class="nav-item">
-    <a class="nav-link" href="#">Login</a>
+    <a class="nav-link" href="/login">Login</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Register</a>
+    <a class="nav-link" href="/register">Register</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">About Us</a>
+    <a class="nav-link" href="/about">About Us</a>
   </li>
 </ul>
 <%-- Header Start --%>
@@ -64,29 +64,26 @@
 <div class="container" style="margin-top:30px; margin-bottom: 30px;">
   <div class="row">
     <%-- Left Menu Start ........  --%>
-    <div class="col-sm-3">
-      <p>Left Menu</p>
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-      </ul>
-      <hr class="d-sm-none">
-    </div>
-    <%-- Left Menu End ........  --%>
+    <c:choose>
+      <c:when test="${left == null}">
+        <jsp:include page="left.jsp"/>
+      </c:when>
+      <c:otherwise>
+        <jsp:include page="${left}.jsp"/>
+      </c:otherwise>
+    </c:choose>
 
+    <%-- Left Menu End ........  --%>
+      <c:choose>
+        <c:when test="${center == null}">
+          <jsp:include page="center.jsp"/>
+        </c:when>
+        <c:otherwise>
+          <jsp:include page="${center}.jsp"/>
+        </c:otherwise>
+      </c:choose>
     <%-- Center Start ........  --%>
-    <div class="col-sm-9">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Sep 2, 2017</h5>
-      <div class="fakeimg">Fake Image</div>
-    </div>
+
     <%-- Center End ........  --%>
   </div>
 </div>
