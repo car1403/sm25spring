@@ -39,9 +39,9 @@
       <label for="sel1">Select list:</label>
       <select class="form-control" id="sel1" name="car">
         <option value="K1">K1</option>
-        <option value="K1">K2</option>
-        <option value="K1">K3</option>
-        <option value="K1">K4</option>
+        <option value="K2">K2</option>
+        <option value="K3">K3</option>
+        <option value="K4">K4</option>
       </select>
     </div>
     <hr>
