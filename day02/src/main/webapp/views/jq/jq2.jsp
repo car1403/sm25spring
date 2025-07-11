@@ -4,5 +4,6 @@
 <%-- Center Page --%>
 <div class="col-sm-9">
   <h2>jQuery2 Center Page</h2>
+  <h2>JqController에 /formtestimpl</h2>
 
 </div>

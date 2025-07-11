@@ -1,11 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script>
 
+
+</script>
 <%-- About Page --%>
 <div class="col-sm-9">
   <h2>About Page</h2>
   <h5>About Us</h5>
-  <form action="/registertestimpl" method="post">
+  <form id="about_form" action="/registertestimpl" method="post">
     <!-- RadioButton -->
     <div class="form-check">
       <label class="form-check-label">
@@ -19,6 +22,7 @@
     </div>
     <hr>
     <!-- CheckBox -->
+    <div>전체<input type="checkbox" id="allCk"></div>
     <div class="form-check">
       <label class="form-check-label" for="check1">
         <input type="checkbox" class="form-check-input" id="check1" name="hobby" value="1">Eat
@@ -51,6 +55,6 @@
     <!-- Calendar -->
     <input type="date" name="date">
     <hr>
-    <button type="submit" class="btn btn-primary">Register</button>
+    <button type="button" class="btn btn-primary">Register</button>
   </form>
 </div>

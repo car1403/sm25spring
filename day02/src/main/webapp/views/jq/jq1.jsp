@@ -55,5 +55,6 @@
       <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="pwd">
     </div>
     <button type="button" class="btn btn-primary">LOGIN</button>
+    <input type="hidden" name="nbti" value="xxx">
   </form>
 </div>
