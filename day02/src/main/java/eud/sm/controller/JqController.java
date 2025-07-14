@@ -1,11 +1,16 @@
 package eud.sm.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/jq")
+@Slf4j
 public class JqController {
 
     String dir = "jq/";
@@ -32,6 +37,21 @@ public class JqController {
     public String jq3(Model model) {
         model.addAttribute("left",dir+"left");
         model.addAttribute("center",dir+"jq3");
+        return "index";
+    }
+    @RequestMapping("/jqformtest")
+    public String jqformtest(Model model,
+                             @RequestParam("id") String id,
+                             @RequestParam("pwd") String pwd,
+                             @RequestParam("comment") String comment,
+                             @RequestParam("ch") List<String> ch,
+                             @RequestParam("ra") String ra,
+                             @RequestParam("sel") String sel
+                             ) {
+        log.info("Input Data: {},{},{},{},{},{}"
+                ,id,pwd,comment,ch,ra,sel);
+        model.addAttribute("left",dir+"left");
+        model.addAttribute("center",dir+"center");
         return "index";
     }
 }
