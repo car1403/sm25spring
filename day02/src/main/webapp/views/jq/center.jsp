@@ -8,11 +8,62 @@
 <script>
   let jq_center = {
     init:function(){
-      $('#jq_form > div > button').click(()=>{
-        $('#jq_form').attr('method','post');
-        $('#jq_form').attr('action','/jq/jqformtest');
-        $('#jq_form').submit();
+      $('#allcheck').click(()=>{
+        let checked = $('#allcheck').is(':checked');
+        console.log(checked);
+        if(checked){
+          $('input:checkbox').prop('checked',true);
+        }else{
+          $('input:checkbox').prop('checked',false);
+        }
       });
+      $('#id').blur(()=>{
+        $('#sid').text('');
+      });
+      $('#pwd').blur(()=>{
+        $('#spwd').text('');
+      });
+      $('#cpwd').blur(()=>{
+        $('#scpwd').text('');
+      });
+      $('#jq_form > div > button').click(()=>{
+        this.check();
+      });
+    },
+    check:function(){
+      let id = $('#id').val();
+      let pwd = $('#pwd').val();
+      let cpwd = $('#cpwd').val();
+
+      let cnt = $('input:checkbox[name=ch]:checked').length;
+
+      if(id == null || id == ''){
+        $('#sid').text('ID는 필수 항목 입니다.');
+        $('#id').focus();
+        return;
+      }
+      if(pwd == null || pwd == ''){
+        $('#spwd').text('PWD는 필수 항목 입니다.');
+        $('#pwd').focus();
+        return;
+      }
+      if(pwd != cpwd){
+        $('#scpwd').text('PWD가 일치 하지 않습니다.');
+        $('#cpwd').focus();
+        return;
+      }
+      if(cnt <= 0){
+        $('#chspan').text('필수 항목 입니다.');
+        $('#ch').focus();
+        return;
+      }
+
+      this.send();
+    },
+    send:function(){
+      $('#jq_form').attr('method','post');
+      $('#jq_form').attr('action','/jq/jqformtest');
+      $('#jq_form').submit();
     }
   }
   $(document).ready(()=>{
@@ -36,16 +87,24 @@
         <div class="form-group">
           <label for="pwd">Password:</label>
           <input type="password" class="form-control" id="pwd" name="pwd">
+          <span id="spwd" class="stxt"></span>
         </div>
         <div class="form-group">
           <label for="cpwd">Check Password:</label>
           <input type="password" class="form-control" id="cpwd">
+          <span id="scpwd" class="stxt"></span>
         </div>
         <div class="form-group">
           <label for="comment">Comment:</label>
           <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
         </div>
+
         <div class="form-group">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" id="allcheck">All
+            </label>
+          </div>
           <div class="form-check">
             <label class="form-check-label">
               <input type="checkbox" name="ch" class="form-check-input" value="op1">Option 1
@@ -61,6 +120,7 @@
               <input type="checkbox" name="ch" class="form-check-input" value="op3">Option 3
             </label>
           </div>
+          <span class="stxt" id="chspan"></span>
         </div>
 
         <div class="form-group">

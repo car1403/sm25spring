@@ -44,14 +44,19 @@ public class JqController {
                              @RequestParam("id") String id,
                              @RequestParam("pwd") String pwd,
                              @RequestParam("comment") String comment,
-                             @RequestParam("ch") List<String> ch,
-                             @RequestParam("ra") String ra,
+                             @RequestParam(value = "ch", defaultValue = "null") List<String> ch,
+                             @RequestParam(value ="ra",defaultValue = "null") String ra,
                              @RequestParam("sel") String sel
                              ) {
         log.info("Input Data: {},{},{},{},{},{}"
                 ,id,pwd,comment,ch,ra,sel);
+        model.addAttribute("register_id",id);
         model.addAttribute("left",dir+"left");
-        model.addAttribute("center",dir+"center");
+        if(id.equals("") || pwd.equals("") ) {
+            model.addAttribute("center",dir+"center");
+        }else{
+            model.addAttribute("center",dir+"ok");
+        }
         return "index";
     }
 }
