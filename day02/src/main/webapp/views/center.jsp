@@ -1,6 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
+  .updown{
+    width:30px;
+  }
   #results{
     width: 200px;
     border:2px solid red;
@@ -18,6 +21,19 @@
         },
         error:()=>{}
       });
+
+      setInterval(()=>{
+        $.ajax({
+          url:url,
+          success:(data)=>{
+            console.log(data);
+            this.display(data);
+          },
+          error:()=>{}
+        });
+      },10000);
+
+
     },
     display:(data)=>{
       // JSON [{},{}]
@@ -26,7 +42,9 @@
         let cnt = item.cnt;
         let title = item.title;
         let updown = item.updown;
-        result += '<p>'+cnt+' '+title+' '+updown+'</p>';
+        result += (updown == 0) ? '<p>'+cnt+' '+title+' '+'<img class="updown" src="/img/up.png">'+'</p>'
+                : '<p>'+cnt+' '+title+' '+'<img class="updown" src="/img/down.png">'+'</p>';
+
       });
       $('#results').html(result);
     }

@@ -13,5 +13,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HotItem {
     private int cnt;
     private String title;
-    private String updown;
+    private int updown;
 }

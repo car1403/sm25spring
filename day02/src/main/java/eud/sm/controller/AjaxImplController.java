@@ -5,9 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @RestController
 public class AjaxImplController {
@@ -20,12 +18,20 @@ public class AjaxImplController {
     }
     @RequestMapping("/getdata")
     public List<HotItem> getdata(){
+
         List<HotItem> list = new ArrayList<>();
-        list.add(HotItem.builder().cnt(1).title("날씨").updown("up").build());
-        list.add(HotItem.builder().cnt(2).title("여름").updown("down").build());
-        list.add(HotItem.builder().cnt(3).title("태풍").updown("up").build());
-        list.add(HotItem.builder().cnt(4).title("장마").updown("down").build());
-        list.add(HotItem.builder().cnt(5).title("러브버그").updown("up").build());
+        Random random = new Random();
+
+        Object c[] = {1,2,3,4,5};
+        Collections.shuffle(Arrays.asList(c));
+
+        list.add(HotItem.builder().cnt((Integer) c[0]).title("날씨").updown(random.nextInt(2)).build());
+        list.add(HotItem.builder().cnt((Integer) c[1]).title("여름").updown(random.nextInt(2)).build());
+        list.add(HotItem.builder().cnt((Integer) c[2]).title("태풍").updown(random.nextInt(2)).build());
+        list.add(HotItem.builder().cnt((Integer) c[3]).title("장마").updown(random.nextInt(2)).build());
+        list.add(HotItem.builder().cnt((Integer) c[4]).title("러브버그").updown(random.nextInt(2)).build());
+        list.sort((o1, o2) -> {return  o1.getCnt() - o2.getCnt();});
+
         return list;
     }
 }
