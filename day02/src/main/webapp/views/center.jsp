@@ -42,7 +42,8 @@
         let cnt = item.cnt;
         let title = item.title;
         let updown = item.updown;
-        result += (updown == 0) ? '<p>'+cnt+' '+title+' '+'<img class="updown" src="/img/up.png">'+'</p>'
+        result += (updown == 1) ?
+                '<p>'+cnt+' '+title+' '+'<img class="updown" src="/img/up.png">'+'</p>'
                 : '<p>'+cnt+' '+title+' '+'<img class="updown" src="/img/down.png">'+'</p>';
 
       });
