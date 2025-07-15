@@ -107,6 +107,16 @@
       <li class="nav-item">
         <a class="nav-link" href="/ajax">AJAX</a>
       </li>
+
+      <c:if test="${sessionScope.loginid != null}">
+        <li class="nav-item">
+          <a class="nav-link" href="/cust">Cust</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/product">Product</a>
+        </li>
+      </c:if>
+
     </ul>
   </div>
 </nav>
