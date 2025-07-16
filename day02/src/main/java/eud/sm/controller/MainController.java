@@ -21,6 +21,16 @@ public class MainController {
         model.addAttribute("center","about");
         return "index";
     }
+    @RequestMapping("/wf")
+    public String wf(Model model) {
+        model.addAttribute("center","wf");
+        return "index";
+    }
+    @RequestMapping("/wt")
+    public String wt(Model model) {
+        model.addAttribute("center","wt");
+        return "index";
+    }
 
 }
 
