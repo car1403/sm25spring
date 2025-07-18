@@ -66,12 +66,13 @@ public class LoginController {
     }
 
     @RequestMapping("/mainregisterimpl")
-    public String mainregisterimpl(Model model,Cust cust) throws Exception {
+    public String mainregisterimpl(Model model,Cust cust, HttpSession session) throws Exception {
         log.info("{},{},{}", cust.getCustPwd(), cust.getCustName(), cust.getCustId());
         // id, pwd, name 입력 받는다.
         // Database에 입력 한다.
         try{
             custService.register(cust);
+            session.setAttribute("logincust",cust);
         }catch(Exception e){
             return "redirect:/register";
         }
