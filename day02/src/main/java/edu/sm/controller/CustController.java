@@ -33,6 +33,11 @@ public class CustController {
         model.addAttribute("center", dir+"add");
         return "index";
     }
+    @RequestMapping("/delete")
+    public String delete(Model model, @RequestParam("id") String id) throws Exception {
+        custService.remove(id);
+        return "redirect:/cust/get";
+    }
     @RequestMapping("/detail")
     public String detail(Model model, @RequestParam("id") String id) throws Exception {
         Cust cust = null;
@@ -42,6 +47,13 @@ public class CustController {
         model.addAttribute("center", dir+"detail");
         return "index";
     }
+
+    @RequestMapping("/updateimpl")
+    public String udpateimpl(Model model, Cust cust) throws Exception {
+        custService.modify(cust);
+        return "redirect:/cust/detail?id="+cust.getCustId();
+    }
+
     @RequestMapping("/get")
     public String get(Model model) throws Exception {
         List<Cust> list = null;
