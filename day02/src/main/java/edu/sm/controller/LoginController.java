@@ -66,12 +66,18 @@ public class LoginController {
     }
 
     @RequestMapping("/mainregisterimpl")
-    public String mainregisterimpl(Model model) {
+    public String mainregisterimpl(Model model,Cust cust) throws Exception {
+        log.info("{},{},{}", cust.getCustPwd(), cust.getCustName(), cust.getCustId());
         // id, pwd, name 입력 받는다.
         // Database에 입력 한다.
-        // 메인 페이지로 이동 한다.
+        try{
+            custService.register(cust);
+        }catch(Exception e){
+            return "redirect:/register";
+        }
 
-        return "index";
+        // 메인 페이지로 이동 한다.
+        return "redirect:/";
     }
 
     @RequestMapping("/registertestimpl")
