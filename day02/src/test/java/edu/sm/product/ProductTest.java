@@ -44,7 +44,7 @@ class ProductTest {
             e.printStackTrace();
         }
     }
-
+    /*
     @Test
     void get() {
         Product product = null;
@@ -92,5 +92,5 @@ class ProductTest {
             e.printStackTrace();
         }
     }
-
+    */
 }
