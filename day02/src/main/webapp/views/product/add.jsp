@@ -15,7 +15,7 @@
     </div>
     <div class="form-group">
       <label for="rate">Discount Rate:</label>
-      <input type="text" class="form-control" placeholder="Enter name" id="rate" name="discountRate">
+      <input type="number" min="0" step="0.1" class="form-control" placeholder="Enter discount rate" id="rate" name="discountRate">
     </div>
     <div class="form-group">
       <label for="pimg">Product Image:</label>

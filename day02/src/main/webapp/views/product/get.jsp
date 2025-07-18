@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style>
   #product_table > tbody > tr > td > img{
     width: 50px;
@@ -21,15 +22,21 @@
     </tr>
     </thead>
     <tbody>
+    <c:forEach var="p" items="${plist}">
       <tr>
-        <td><img src="/img/r1.jpg"></td>
-        <td>1000</td>
-        <td>바지</td>
-        <td>20000</td>
-        <td>3.2</td>
-        <td>2025년7월1일</td>
-        <td>하의</td>
+        <td><img src="/img/${p.productImg}"></td>
+        <td>${p.productId}</td>
+        <td>${p.productName}</td>
+        <td><fmt:formatNumber type="number" pattern="###,###원" value="${p.productPrice}" /></td>
+        <td>${p.discountRate}</td>
+        <td>
+          <fmt:parseDate value="${ p.productRegdate }"
+                           pattern="yyyy-MM-dd HH:mm:ss" var="parsedDateTime" type="both" />
+          <fmt:formatDate pattern="yyyy년MM월dd일" value="${ parsedDateTime }" />
+        </td>
+        <td>${p.cateName}</td>
       </tr>
+    </c:forEach>
     </tbody>
   </table>
 
