@@ -4,7 +4,11 @@
 <%-- Center Page --%>
 <div class="col-sm-9">
   <h2>Product Add Page</h2>
-  <form action="/product/registerimpl" method="post">
+  <form id="product_update_form">
+    <div class="form-group">
+      <label for="id">Id:</label>
+      <input type="number" readonly class="form-control"  id="id" name="productId">
+    </div>
     <div class="form-group">
       <label for="name">Name:</label>
       <input type="text" class="form-control" placeholder="Enter name" id="name" name="productName">
@@ -25,7 +29,16 @@
       <label for="cate">Cate Id:</label>
       <input type="number" class="form-control" placeholder="Enter cate id" id="cate" name="cateId">
     </div>
-    <button type="submit" class="btn btn-primary">Register</button>
+    <div class="form-group">
+      <label for="rdate">Register Date:</label>
+      <input type="text" class="form-control" id="rdate" readonly>
+    </div>
+    <div class="form-group">
+      <label for="udate">Update Date:</label>
+      <input type="text" class="form-control" id="udate" readonly>
+    </div>
+    <button type="button" class="btn btn-primary" id="update_btn">Update</button>
+    <button type="button" class="btn btn-primary" id="delete_btn">Delete</button>
   </form>
 
 </div>
