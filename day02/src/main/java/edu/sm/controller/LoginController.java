@@ -65,6 +65,15 @@ public class LoginController {
         return "index";
     }
 
+    @RequestMapping("/mainregisterimpl")
+    public String mainregisterimpl(Model model) {
+        // id, pwd, name 입력 받는다.
+        // Database에 입력 한다.
+        // 메인 페이지로 이동 한다.
+
+        return "index";
+    }
+
     @RequestMapping("/registertestimpl")
     // ?id=aaaaa&pwd=xxxxx
     public String registertestimpl(Model model,
