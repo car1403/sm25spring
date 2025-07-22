@@ -32,7 +32,18 @@ public class ProductService implements SmService<Product, Integer> {
 
     @Override
     public void modify(Product product) throws Exception {
-        productRepository.update(product);
+        // 기존 이미지 사용
+        if(product.getProductImgFile().isEmpty()){
+            productRepository.update(product);
+        }
+        // 신규 이미지 사용
+        else{
+            FileUploadUtil.deleteFile(product.getProductImg(), imgDir);
+            FileUploadUtil.saveFile(product.getProductImgFile(), imgDir);
+            product.setProductImg(product.getProductImgFile().getOriginalFilename());
+            productRepository.update(product);
+        }
+
     }
 
     @Override
