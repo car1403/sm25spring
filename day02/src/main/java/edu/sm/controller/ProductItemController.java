@@ -22,7 +22,10 @@ public class ProductItemController {
     String dir = "productitem/";
 
     @RequestMapping("")
-    public String login(Model model) {
+    public String product(Model model) throws Exception {
+        List<Product> list = null;
+        list = productService.get();
+        model.addAttribute("plist",list);
         model.addAttribute("left",dir+"left");
         model.addAttribute("center",dir+"center");
         return "index";
