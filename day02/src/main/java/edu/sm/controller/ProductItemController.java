@@ -42,10 +42,11 @@ public class ProductItemController {
         return "index";
     }
     @RequestMapping("/addimpl")
-    public String addimpl(Model model, Product product) {
-        log.info("Input Date {},{}",product.getProductName(),product.getProductImgFile().getOriginalFilename());
-        model.addAttribute("left",dir+"left");
-        model.addAttribute("center",dir+"add");
-        return "index";
+    public String addimpl(Model model, Product product) throws Exception {
+        log.info("Input Date {},{}",
+                product.getProductName(),
+                product.getProductImgFile().getOriginalFilename());
+        productService.register(product);
+        return "redirect:/productitem/get";
     }
 }

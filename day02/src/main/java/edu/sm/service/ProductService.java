@@ -5,7 +5,9 @@ import edu.sm.dto.Product;
 import edu.sm.frame.SmService;
 import edu.sm.repository.CustRepository;
 import edu.sm.repository.ProductRepository;
+import edu.sm.util.FileUploadUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +18,15 @@ public class ProductService implements SmService<Product, Integer> {
 
     final ProductRepository  productRepository;
 
+    @Value("${app.dir.uploadimgsdir}")
+    String imgDir;
+
     @Override
     public void register(Product product) throws Exception {
+        if(product.getProductImgFile() != null){
+            product.setProductImg(product.getProductImgFile().getOriginalFilename());
+            FileUploadUtil.saveFile(product.getProductImgFile(), imgDir);
+        }
         productRepository.insert(product);
     }
 
