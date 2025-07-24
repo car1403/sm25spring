@@ -30,11 +30,25 @@ public class CartService implements SmService<Cart, Cart> {
 
     @Override
     public List<Cart> get() throws Exception {
-        return cartRepository.selectAll();
+        return null;
     }
 
     @Override
     public Cart get(Cart cart) throws Exception {
         return null;
     }
+
+    public List<Cart> findByCustId(String custId) throws Exception {
+        return cartRepository.findByCustId(custId);
+    }
 }
+
+
+
+
+
+
+
+
+
+

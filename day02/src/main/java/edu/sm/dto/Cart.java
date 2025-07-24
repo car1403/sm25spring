@@ -16,5 +16,5 @@ public class Cart {
     // Join Data
     private String productName;
     private int productPrice;
-    private int productImg;
+    private String productImg;
 }
