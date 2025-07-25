@@ -48,6 +48,7 @@ public class ProductItemController {
         model.addAttribute("center",dir+"see");
         return "index";
     }
+
     @RequestMapping("/detail")
     public String detail(Model model, @RequestParam("id") int id) throws Exception {
         Product product = null;

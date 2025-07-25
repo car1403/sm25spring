@@ -27,5 +27,12 @@ public class CartController {
         model.addAttribute("center",dir+"cart");
         return "index";
     }
+    @RequestMapping("/add")
+    public String add(Model model, Cart cart) throws Exception {
+
+        cartService.register(cart);
+
+        return "redirect:/cart?id="+cart.getCustId();
+    }
 
 }

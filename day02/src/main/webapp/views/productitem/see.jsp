@@ -20,8 +20,30 @@
         $('#total').text(total.toLocaleString('ko-KR') + '원');
         $('#cnt').val(cnt);
       });
-      $('#add_btn').click(()=>{}); // AJAX
-      $('#go_btn').click(()=>{});  // go cart
+      $('#add_btn').click(()=>{
+        let productId = ${p.productId};
+        let custId = '${sessionScope.logincust.custId}';
+        let cnt = $('#cnt').val();
+
+        $('#myModal').modal('hide');
+
+        $.ajax({
+          url:'/addcart',
+          data:{custId:custId, productId:productId, productQt:cnt},
+          success:(result)=>{
+            result ? alert('OK') : alert('FAIL');
+          }
+        });
+
+      }); // AJAX
+      $('#go_btn').click(()=>{
+        let productId = ${p.productId};
+        let custId = '${sessionScope.logincust.custId}';
+        let cnt = $('#cnt').val();
+        location.href = '/cart/add?custId='+custId
+                +'&productId='+productId
+                +'&productQt='+cnt;
+      });  // go cart
     }
   }
 

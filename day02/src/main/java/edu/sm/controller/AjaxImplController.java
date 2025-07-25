@@ -1,6 +1,9 @@
 package edu.sm.controller;
 
+import edu.sm.dto.Cart;
 import edu.sm.dto.HotItem;
+import edu.sm.service.CartService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,7 +12,25 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @RestController
+@RequiredArgsConstructor
 public class AjaxImplController {
+
+    final CartService cartService;
+
+    @RequestMapping("/addcart")
+    public Object addcart(Cart cart) throws Exception {
+        int result = 1;
+        try{
+            cartService.register(cart);    
+        }catch(Exception e){
+            result = 0;
+            throw e;
+        }
+        
+        return result;
+    }
+
+
     @RequestMapping("/checkid")
     public Object checkid(@RequestParam("id")  String id){
         String result = "1";
