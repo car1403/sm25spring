@@ -17,7 +17,11 @@
     <tbody>
     <c:forEach var="c" items="${carts}">
     <tr>
-      <td><img src="/imgs/${c.productImg}" width="50px;"></td>
+      <td>
+        <a href="/productitem/see?id=${c.productId}">
+          <img src="/imgs/${c.productImg}" width="50px;">
+        </a>
+      </td>
       <td>${c.productName}</td>
       <td>${c.productPrice}</td>
       <td>${c.productQt}</td>
