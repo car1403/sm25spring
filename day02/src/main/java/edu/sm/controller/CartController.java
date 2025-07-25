@@ -29,9 +29,17 @@ public class CartController {
     }
     @RequestMapping("/add")
     public String add(Model model, Cart cart) throws Exception {
-
         cartService.register(cart);
-
+        return "redirect:/cart?id="+cart.getCustId();
+    }
+      @RequestMapping("/del")
+    public String del(Model model, Cart cart) throws Exception {
+        cartService.remove(cart);
+        return "redirect:/cart?id="+cart.getCustId();
+    }
+    @RequestMapping("/mod")
+    public String mod(Model model, Cart cart) throws Exception {
+        cartService.modify(cart);
         return "redirect:/cart?id="+cart.getCustId();
     }
 
