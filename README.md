@@ -21,7 +21,7 @@
 ![Projectimg](imgs/readme/project.png)
 
 ## ERD
-![ERD](imgs/readme/ERD.png)
+![ERD](mdimg/face3.jpg)
 
 ## 화면 흐름도
 ![flowchart](imgs/readme/flowchart.png)
